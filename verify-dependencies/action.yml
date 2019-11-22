@@ -1,10 +1,5 @@
 name: 'Verify no SNAPSHOT dependencies'
-description: 'Verifies that the maven pom file has no SNAPSHOT dependencies, is dependent on a runner/repository using MVN'
-inputs:
-  file-path:
-    required: false
-    description: 'path to the folder containing the pom.xml'
-    default: 'current directory of the runner - $PWD'
+description: 'Verifies that the maven pom file has no SNAPSHOT dependencies. This dependent on a runner/repository using MVN'
 runs:
   using: 'node12'
   main: 'index.js'
