@@ -22,11 +22,12 @@ then
     fi
   fi
 
-  echo "Committing changes for $INPUT_AUTHOR_NAME - $INPUT_AUTHOR_EMAIL with message: $COMMIT_MESSAGE"
+  echo "Committing changes with message: $COMMIT_MESSAGE"
 
   git add "$INPUT_PATTERN"
   git commit -m "$COMMIT_MESSAGE"
   git push
+
 else
   echo "No difference detected."
 fi
