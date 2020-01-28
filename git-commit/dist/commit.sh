@@ -2,8 +2,8 @@
 set -e
 
 git remote set-url origin https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
-git config --global user.email "$INPUT_AUTHOR_EMAIL"
-git config --global user.name "$INPUT_AUTHOR_NAME"
+git config --global user.email "$AUTHOR_EMAIL"
+git config --global user.name "$AUTHOR_NAME"
 
 echo 'Making a commit if there is difference from HEAD_COMMIT'
 
