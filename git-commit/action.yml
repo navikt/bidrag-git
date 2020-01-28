@@ -1,0 +1,23 @@
+name: Git commit
+description: Create a commit in a git repository
+inputs:
+  author_name:
+    description: the name of the commit autor
+    required: true
+  author_email:
+    description: the email for the commit author
+    required: true
+  commit_message:
+    description: the commit message for any changes made by former actions
+    required: true
+    default: "Changes made by GitHub actions"
+  commit_message_command:
+    description: a command which will produce some text to replace {} in the commit message.
+    required: false
+  pattern:
+    description: the pattern to use with git add
+    required: false
+    default: "."
+runs:
+  using: node12
+  main: dist/index.js
