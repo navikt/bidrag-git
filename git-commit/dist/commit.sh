@@ -18,11 +18,11 @@ then
     fi
   fi
 
+  echo "Committing changes for $INPUT_AUTHOR_NAME - $INPUT_AUTHOR_EMAIL with message: $COMMIT_MESSAGE"
+
   git remote set-url origin https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
   git config --global user.email "$INPUT_AUTHOR_EMAIL"
   git config --global user.name "$INPUT_AUTHOR_NAME"
-
-  echo "Commiting changes with commit message: $COMMIT_MESSAGE"
 
   git add "$INPUT_PATTERN"
   git commit -m "$COMMIT_MESSAGE"
