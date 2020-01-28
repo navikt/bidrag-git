@@ -27,6 +27,7 @@ then
   git add "$INPUT_PATTERN"
   git commit -m "$COMMIT_MESSAGE"
   git push
+
 else
   echo "No difference detected."
 fi
