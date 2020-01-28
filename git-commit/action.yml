@@ -1,16 +1,9 @@
 name: Git commit
 description: Create a commit in a git repository
 inputs:
-  author_name:
-    description: the name of the commit autor
-    required: true
-  author_email:
-    description: the email for the commit author
-    required: true
   commit_message:
     description: the commit message for any changes made by former actions
     required: true
-    default: "Changes made by GitHub actions"
   commit_message_file:
     description: a file with content which will replace {} in the commit message.
     required: false

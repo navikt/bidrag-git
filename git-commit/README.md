@@ -11,5 +11,7 @@ pattern to use with git add and a file with content to add to the commit message
 If a file containing some commit message content is present, the content will replace {} from the commit
 message provided.
 
-The author information of the commit should be gathered from the GITHUB_EVENT, ie:
-${{ github.head_commit.author }}
+The author information of the commit will be gathered from the GITHUB_EVENT. If no event is present, the
+following information will be used:
+- Author name: Tag & Commit Action
+- Author email: navikt.bidrag-actions.git-commit@github.com
