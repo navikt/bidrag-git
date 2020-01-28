@@ -1,19 +1,20 @@
 #!/bin/bash
 set -e
 
-echo 'Files staged for commit'
-git diff --name-only
+echo 'Making a commit if there is difference from HEAD_COMMIT'
 
 if ! git diff --quiet
 then
   if [[ -z $INPUT_COMMIT_MESSAGE_FILE ]]
   then
+    echo "No file to replace commit message is added to the input"
+  else
     if [[ -f $INPUT_COMMIT_MESSAGE_FILE ]]
     then
-      REPLACE_MESSAGE=$(cat $INPUT_COMMIT_MESSAGE_FILE)
-      INPUT_COMMIT_MESSAGE=$(echo "$INPUT_COMMIT_MESSAGE" | sed "s;{};$(REPLACE_MESSAGE)")
+      REPLACE_MESSAGE=$(cat "$INPUT_COMMIT_MESSAGE_FILE")
+      COMMIT_MESSAGE=$(echo "$INPUT_COMMIT_MESSAGE" | sed "s;{};$REPLACE_MESSAGE;")
     else
-      echo "Is not a faile: &INPUT_COMMIT_MESSAGE_FILE"
+      echo "Is not a file: $INPUT_COMMIT_MESSAGE_FILE"
     fi
   fi
 
@@ -21,11 +22,11 @@ then
   git config --global user.email "$INPUT_AUTHOR_EMAIL"
   git config --global user.name "$INPUT_AUTHOR_NAME"
 
-  echo "Commiting changes with commit message: $INPUT_COMMIT_MESSAGE"
+  echo "Commiting changes with commit message: $COMMIT_MESSAGE"
 
   git add "$INPUT_PATTERN"
-  git commit -m "$INPUT_COMMIT_MESSAGE"
+  git commit -m "$COMMIT_MESSAGE"
   git push
 else
-  echo "No files staged for commit."
+  echo "No difference detected."
 fi
