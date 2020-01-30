@@ -18,5 +18,5 @@ fi
 
 echo "Tagging HEAD_COMMIT with message: $TAG_MESSAGE"
 
-git tag "$TAG" -a "$TAG_MESSAGE"
+git tag -a "$TAG" -m "$TAG_MESSAGE"
 git push origin "$TAG"
