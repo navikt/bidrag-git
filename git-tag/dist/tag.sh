@@ -7,6 +7,12 @@ git config --global user.name "$AUTHOR_NAME"
 
 echo 'Making a tag of the HEAD_COMMIT'
 
+if [[ -z $INPUT_SRC_FOLDER ]]
+then
+  echo "will try to change folder to $INPUT_SRC_FOLDER"
+  cd "$INPUT_SRC_FOLDER"
+fi
+
 if [[ -f $INPUT_TAG_FILE ]]
 then
   TAG=$(cat "$INPUT_TAG_FILE")
