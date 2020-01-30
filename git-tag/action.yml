@@ -1,0 +1,12 @@
+name: Git tag
+description: Create a tag in a git repository
+inputs:
+  tag_file:
+    description: a file with content of the tag. This will also replace {} in the tag message.
+    required: true
+  tag_message:
+    description: the tag message
+    required: true
+runs:
+  using: node12
+  main: dist/index.js
