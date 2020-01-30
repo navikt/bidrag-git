@@ -9,7 +9,10 @@ echo 'Making a tag of the HEAD_COMMIT'
 
 if [[ -z $INPUT_SRC_FOLDER ]]
 then
-  echo "will try to change folder to $INPUT_SRC_FOLDER"
+  echo "Will not change working directory"
+  pwd
+else
+  echo "Will try to change folder to $INPUT_SRC_FOLDER"
   cd "$INPUT_SRC_FOLDER"
 fi
 
