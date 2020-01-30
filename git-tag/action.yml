@@ -1,6 +1,9 @@
 name: Git tag
 description: Create a tag in a git repository
 inputs:
+  src_folder:
+    description: src folder for the git repository to tag
+    required: false
   tag_file:
     description: a file with content of the tag. This will also replace {} in the tag message.
     required: true
