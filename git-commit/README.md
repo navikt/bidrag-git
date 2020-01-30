@@ -5,8 +5,8 @@ This action will commit changed repository files and push to origin
 Requires a runner with node and ncc installed. Also the running environment must be able to execute
 bash scripts.
 
-The action requires the commit message. Optional inputs are the pattern to use with git add and a file
-with content to add to the commit message.
+The action requires the commit message. An optional input is a file with content to add to the commit
+message.
 
 If a file containing some commit message content is present, the content will replace {} from the commit
 message provided.
