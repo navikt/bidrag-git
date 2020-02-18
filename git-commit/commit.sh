@@ -5,8 +5,6 @@ git remote set-url origin https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${G
 git config --global user.email "$AUTHOR_EMAIL"
 git config --global user.name "$AUTHOR_NAME"
 
-echo 'Making a commit if there is difference from HEAD_COMMIT'
-
 if ! git diff --quiet
 then
   if [[ -z $INPUT_COMMIT_MESSAGE_FILE ]]
