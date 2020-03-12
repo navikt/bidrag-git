@@ -21,7 +21,7 @@ then
   TAG=$(cat "$INPUT_TAG_FILE")
   TAG_MESSAGE=$(echo "$INPUT_TAG_MESSAGE" | sed "s;{};$TAG;")
 else
-  >&2 echo "::error Is not a file: $INPUT_TAG_FILE"
+  >&2 echo ::error Is not a file: $INPUT_TAG_FILE
   exit 1
 fi
 
