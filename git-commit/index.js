@@ -3,11 +3,13 @@ const exec = require("@actions/exec");
 
 async function run() {
   try {
+    const commitMessage = core.getInput('commit_message');
+    const pattern = core.getInput('pattern');
 
     setAuthorInformation();
 
     // Execute tag bash script
-    await exec.exec(`${__dirname}/commit.sh`);
+    await exec.exec(`bash ${__dirname}/commit.sh ${commitMessage} ${pattern}`);
 
   } catch (error) {
     core.setFailed(error.message);

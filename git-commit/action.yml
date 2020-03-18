@@ -4,9 +4,6 @@ inputs:
   commit_message:
     description: the commit message for any changes made by former actions
     required: true
-  commit_message_file:
-    description: a file with content which will replace {} in the commit message.
-    required: false
   pattern:
     description: the pattern to use with git add
     required: false
