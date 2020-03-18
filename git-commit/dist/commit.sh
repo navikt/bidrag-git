@@ -20,7 +20,9 @@ then
     fi
   fi
 
-  echo "Committing changes with message: $COMMIT_MESSAGE"
+  git status
+
+  echo "Committing changes (pattern: '$INPUT_PATTERN') with message: $COMMIT_MESSAGE"
 
   git add "$INPUT_PATTERN"
   git commit -m "$COMMIT_MESSAGE"
