@@ -17,7 +17,7 @@ git remote set-url origin https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${G
 git config --global user.email "$AUTHOR_EMAIL"
 git config --global user.name "$AUTHOR_NAME"
 
-if ! git diff --quiet
+if ! git diff --exit-code
 then
   git status
 
