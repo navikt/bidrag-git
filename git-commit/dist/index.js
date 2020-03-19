@@ -1272,12 +1272,11 @@ const exec = __webpack_require__(920);
 async function run() {
   try {
     const commitMessage = core.getInput('commit_message');
-    const pattern = core.getInput('pattern');
 
     setAuthorInformation();
 
     // Execute tag bash script
-    await exec.exec(`bash ${__dirname}/commit.sh ${commitMessage} ${pattern}`);
+    await exec.exec(`bash ${__dirname}/commit.sh ${commitMessage}`);
 
   } catch (error) {
     core.setFailed(error.message);

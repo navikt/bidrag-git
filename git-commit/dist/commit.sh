@@ -22,11 +22,10 @@ then
   git status
 
   COMMIT_MESSAGE="$1"
-  PATTERN="$2"
 
-  echo "Committing changes (pattern: $PATTERN) with message: $COMMIT_MESSAGE"
+  echo "Committing changes (pattern: $INPUT_PATTERN) with message: $COMMIT_MESSAGE"
 
-  git add "$PATTERN"
+  git add "$INPUT_PATTERN"
   git commit -m "$COMMIT_MESSAGE"
   git push
 else
