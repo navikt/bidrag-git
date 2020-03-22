@@ -6,6 +6,8 @@ async function run() {
     const commitMessage = core.getInput('commit_message');
     const pattern = core.getInput('pattern');
 
+    console.info('git commit pattern: ' + pattern);
+
     setAuthorInformation();
 
     // Execute tag bash script
