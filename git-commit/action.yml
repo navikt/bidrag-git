@@ -6,8 +6,7 @@ inputs:
     required: true
   pattern:
     description: the pattern to use with git add
-    required: false
-    default: "."
+    required: true
 runs:
   using: node12
   main: dist/index.js
