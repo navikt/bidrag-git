@@ -30,5 +30,7 @@ then
   git commit -m "$COMMIT_MESSAGE"
   git push
 else
-  echo "No difference detected."
+  echo "No difference detected in $GITHUB_REPOSITORY, did not use $INPUT_PATTERN."
 fi
+
+git status
