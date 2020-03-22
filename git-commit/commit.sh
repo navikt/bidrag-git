@@ -21,7 +21,8 @@ if ! git diff --quiet
 then
   git status
 
-  COMMIT_MESSAGE="$1"
+  INPUT_PATTERN=$1
+  COMMIT_MESSAGE=$2
 
   echo "Committing changes (pattern: $INPUT_PATTERN) with message: $COMMIT_MESSAGE"
 
