@@ -714,15 +714,15 @@ const exec = __webpack_require__(120);
 
 async function run() {
   try {
-    const commitMessage = core.getInput('commit_message');
     const pattern = core.getInput('pattern');
+    const commitMessage = core.getInput('commit_message');
 
     console.info('git commit pattern: ' + pattern);
 
     setAuthorInformation();
 
     // Execute tag bash script
-    await exec.exec(`bash ${__dirname}/commit.sh ${commitMessage} ${pattern}`);
+    await exec.exec(`bash ${__dirname}/commit.sh ${pattern} ${commitMessage}`);
 
   } catch (error) {
     core.setFailed(error.message);
