@@ -19,12 +19,12 @@ jobs:
       - name: Install git-commit
         uses: navikt/bidrag-actions/build-node-artifact@master
         with:
-          artifact_folder: bidrag-actions/git-commit
+          artifact_folder: bidrag-git/commit
       - name: Install git-tag
         uses: navikt/bidrag-actions/build-node-artifact@master
         with:
-          artifact_folder: bidrag-actions/git-tag
-      - uses: navikt/bidrag-git/git-commit@v3.0.2
+          artifact_folder: bidrag-git/tag
+      - uses: navikt/bidrag-git/commit@v3.0.3
         with:
           commit_message: "${{ steps.now.outputs.timestamp }}: Build of actions with npm and ncc"
           pattern: .
