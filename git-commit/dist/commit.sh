@@ -1,5 +1,5 @@
 #!/bin/bash
-set -E
+set -e
 
 ############################################
 #
@@ -19,7 +19,7 @@ git config --global user.name "$AUTHOR_NAME"
 
 if ! git diff --quiet
 then
-  git status
+  git status | grep -v "Your branch is" | grep -v "Changes not staged" | grep -v "(use \"git"
 
   INPUT_PATTERN=$1
   COMMIT_MESSAGE=$2
