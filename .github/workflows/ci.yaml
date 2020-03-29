@@ -16,12 +16,12 @@ jobs:
       - run: npm i -g @zeit/ncc
       - name: Debug workspace
         run: env
-      - name: Install git-commit
-        uses: navikt/bidrag-actions/build-node-artifact@master
+      - name: Install commit
+        uses: navikt/bidrag-node/build-with-ncc@v1
         with:
           artifact_folder: bidrag-git/commit
-      - name: Install git-tag
-        uses: navikt/bidrag-actions/build-node-artifact@master
+      - name: Install tag
+        uses: navikt/bidrag-node/build-with-ncc@v1
         with:
           artifact_folder: bidrag-git/tag
       - uses: navikt/bidrag-git/commit@v3.0.3
