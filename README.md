@@ -16,6 +16,7 @@ Andre sider ved design av disse "actions", er at de er laget for å kjøre samme
 
 Versjon | Endringstype | Beskrivelse
 --------|--------------|------------
+v3.0.4  | Endret       | `tag`: message is surrounded with quotes in javascript
 v3.0.3  | Endret       | repo foldere endret navn, git-commit -> commit og git-tag -> tag
 v3.0.2  | Endret       | `git-commit`: javascript setter anførselstegn rundt commit melding
 v3.0.1  | Endret       | `git-commit`: javascript setter anførselstegn rundt commit melding
