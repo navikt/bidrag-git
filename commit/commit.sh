@@ -32,5 +32,3 @@ then
 else
   echo "No difference detected in $GITHUB_REPOSITORY, did not use pattern: $INPUT_PATTERN"
 fi
-
-git status
