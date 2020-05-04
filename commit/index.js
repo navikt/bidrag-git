@@ -5,11 +5,20 @@ async function run() {
   try {
     const pattern = core.getInput('pattern');
     const commitMessage = core.getInput('commit_message');
+    const author = core.getInput('author');
 
-    setAuthorInformation();
+    if (author == null) {
+      setAuthorInformation();
+    } else {
+      process.env.AUTHOR_NAME = author;
+      process.env.AUTHOR_EMAIL = 'no-reply-' + author + '@navikt.github.com';
+      process.env.GITHUB_TOKEN = core.getInput('security_token');
+    }
 
     // Execute tag bash script
-    await exec.exec(`bash ${__dirname}/../commit.sh ${pattern} "${commitMessage}"`);
+    await exec.exec(
+        `bash ${__dirname}/../commit.sh ${pattern} "${commitMessage}"`
+    );
 
   } catch (error) {
     core.setFailed(error.message);
@@ -29,7 +38,7 @@ function setAuthorInformation() {
     core.warning('No event path available, unable to fetch author info.');
 
     process.env.AUTHOR_NAME = 'Commit Action';
-    process.env.AUTHOR_EMAIL = 'navikt.bidrag-actions.git-commit@github.com';
+    process.env.AUTHOR_EMAIL = 'bidrag-git.commit@navikt.github.com';
   }
 
   core.info(

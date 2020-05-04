@@ -7,6 +7,12 @@ inputs:
   pattern:
     description: the pattern to use with git add
     required: true
+  author:
+    description: the author of this commit (this will also result in email address "no-reply-<author>@navikt.github.com"). if no author is given, the author information from the github event is used
+    required: false
+  security_token:
+    description: the security token to authorize this commit when an author is provided. if no autor is provided, GITHUB_TOKEN is expected as an environment variable
+    required: false
 runs:
   using: node12
   main: dist/index.js

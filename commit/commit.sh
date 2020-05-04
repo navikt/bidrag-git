@@ -1,6 +1,5 @@
 #!/bin/bash
 set -e
-
 ############################################
 #
 # Følgende skjer i dette skriptet:
