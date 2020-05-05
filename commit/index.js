@@ -7,14 +7,10 @@ async function run() {
     const commitMessage = core.getInput('commit_message');
     const author = core.getInput('author');
 
-    if (author == null || author.trim().equals("")) {
-      setAuthorInformation();
+    if (author == null || author === "") {
+      setAuthorInformationFromGithubEvent();
     } else {
-      process.env.AUTHOR_NAME = author;
-      process.env.AUTHOR_EMAIL = 'no-reply-' + author + '@navikt.github.com';
-      process.env.GITHUB_TOKEN = core.getInput('security_token');
-
-      core.info("Author: " + author + ", email: " + process.env.AUTHOR_EMAIL)
+      setAuthorInformationFromInput();
     }
 
     // Execute tag bash script
@@ -27,7 +23,7 @@ async function run() {
   }
 }
 
-function setAuthorInformation() {
+function setAuthorInformationFromGithubEvent() {
   const eventPath = process.env.GITHUB_EVENT_PATH;
 
   if (eventPath) {
@@ -46,6 +42,14 @@ function setAuthorInformation() {
   core.info(
       `Using '${process.env.AUTHOR_NAME} <${process.env.AUTHOR_EMAIL}>' as author.`
   );
+}
+
+function setAuthorInformationFromInput() {
+  process.env.AUTHOR_NAME = author;
+  process.env.AUTHOR_EMAIL = 'no-reply-' + author + '@navikt.github.com';
+  process.env.GITHUB_TOKEN = core.getInput('security_token');
+
+  core.info("Author: " + author + ", email: " + process.env.AUTHOR_EMAIL)
 }
 
 // noinspection JSIgnoredPromiseFromCall
