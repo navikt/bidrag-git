@@ -1491,12 +1491,14 @@ async function run() {
     const commitMessage = core.getInput('commit_message');
     const author = core.getInput('author');
 
-    if (author == null) {
+    if (author == null || author.trim().equals("")) {
       setAuthorInformation();
     } else {
       process.env.AUTHOR_NAME = author;
       process.env.AUTHOR_EMAIL = 'no-reply-' + author + '@navikt.github.com';
       process.env.GITHUB_TOKEN = core.getInput('security_token');
+
+      core.info("Author: " + author + ", email: " + process.env.AUTHOR_EMAIL)
     }
 
     // Execute tag bash script
