@@ -1494,7 +1494,7 @@ async function run() {
     if (author == null || author === "") {
       setAuthorInformationFromGithubEvent();
     } else {
-      setAuthorInformationFromInput();
+      setAuthorInformationFromInput(author);
     }
 
     // Execute tag bash script
@@ -1528,7 +1528,7 @@ function setAuthorInformationFromGithubEvent() {
   );
 }
 
-function setAuthorInformationFromInput() {
+function setAuthorInformationFromInput(author) {
   process.env.AUTHOR_NAME = author;
   process.env.AUTHOR_EMAIL = 'no-reply-' + author + '@navikt.github.com';
   process.env.GITHUB_TOKEN = core.getInput('security_token');
