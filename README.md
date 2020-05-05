@@ -16,6 +16,7 @@ Andre sider ved design av disse "actions", er at de er laget for å kjøre samme
 
 Versjon | Endringstype | Beskrivelse
 --------|--------------|------------
+v3.0.7  | Endret       | `commit`: run without input when author is blank
 v3.0.6  | Endret       | `commit`: author and token can be provided as input
 v3.0.5  | Endret       | `commit`: no git status after push
 v3.0.4  | Endret       | `tag`: message is surrounded with quotes in javascript
