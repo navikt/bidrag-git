@@ -13,6 +13,9 @@ inputs:
   security_token:
     description: the security token to authorize this commit when an author is provided. if no autor is provided, GITHUB_TOKEN is expected as an environment variable
     required: false
+  git_folder:
+    description: a folder where to move if working directory is outside a git project
+    required: false
 runs:
   using: node12
   main: dist/index.js
