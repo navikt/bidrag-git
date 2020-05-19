@@ -20,6 +20,8 @@ git config --global user.name "$AUTHOR_NAME"
 if [[ -z "$INPUT_GIT_FOLDER" ]]; then
   echo "using $PWD as git repository"
 else
+  ls -all
+  echo "git folder: $PWD/INPUT_GIT_FOLDER"
   cd "$INPUT_GIT_FOLDER"
 fi
 
