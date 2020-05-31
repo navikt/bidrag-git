@@ -13,17 +13,17 @@ set -x
 #
 ############################################
 
-git remote set-url origin https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
-git config --global user.email "$AUTHOR_EMAIL"
-git config --global user.name "$AUTHOR_NAME"
-
 if [[ -z "$INPUT_GIT_FOLDER" ]]; then
   echo "using $PWD as git repository"
 else
   ls -all
   echo "git folder: $PWD/$INPUT_GIT_FOLDER"
-  cd "$INPUT_GIT_FOLDER"
+  cd "$INPUT_GIT_FOLDER" || exit 1;
 fi
+
+git remote set-url origin https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+git config --global user.email "$AUTHOR_EMAIL"
+git config --global user.name "$AUTHOR_NAME"
 
 if ! git diff --quiet
 then
