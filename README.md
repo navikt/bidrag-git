@@ -12,11 +12,11 @@ Man må også oppgi miljøvariabler for autentisering, eks: `GITHUB_TOKEN`.
 
 Andre sider ved design av disse "actions", er at de er laget for å kjøre sammen. Dvs. at enkelte actions lager output som kan brukes av andre "actions". 
 
-### Changelog
+### Release log
 
 Versjon | Endringstype | Beskrivelse
 --------|--------------|------------
-v3.0.8  | Endret       | `commit`: move to git folder before running
+v4.0.0  | Endret       | `commit`: add security token and change directory to git folder before running
 v3.0.7  | Endret       | `commit`: run without input when author is blank
 v3.0.6  | Endret       | `commit`: author and token can be provided as input
 v3.0.5  | Endret       | `commit`: no git status after push
