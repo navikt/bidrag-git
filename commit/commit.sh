@@ -25,7 +25,7 @@ fi
 LATEST_AUTHOR="$(git log --pretty=%an -1)"
 
 if [[ "$LATEST_AUTHOR" == "$INPUT_AUTHOR" ]]; then
-  echo "a commit has allready been done on this branch by $INPUT_AUTHOR... skipping new commit"
+  echo "a commit has already been done on this branch by $INPUT_AUTHOR... skipping new commit"
   exit 0;
 fi
 
