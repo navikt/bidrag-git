@@ -16,3 +16,6 @@ If no event is present, the following information will be used:
 If an author is provided, the following information will be used:
 - Author name: the author provided 
 - Author email: no-reply-<author provided>@navikt.github.com
+
+If an author is provided, it will not do a new commit when the last commit was done by this author.
+This to prevent an eternal loop of commits by the same author...
