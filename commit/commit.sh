@@ -22,6 +22,13 @@ else
   cd "$INPUT_GIT_FOLDER" || exit 1;
 fi
 
+LATEST_AUTHOR="$(git log --pretty=%an -1)"
+
+if [[ "$LATEST_AUTHOR" == "$INPUT_AUTHOR" ]]; then
+  echo "a commit has already been done on this branch by $INPUT_AUTHOR... skipping new commit"
+  exit 0;
+fi
+
 git remote set-url origin https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
 git config --global user.email "$AUTHOR_EMAIL"
 git config --global user.name "$AUTHOR_NAME"
