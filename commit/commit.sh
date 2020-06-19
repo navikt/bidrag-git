@@ -7,8 +7,9 @@ set -e
 # 1) Konfigurerer git for remote repository
 #    - USER_EMAIL og USER_NAME settes av javascriptet
 # 2) Setter working directory til git folder
-# 3) Når det er en endring i repository:
-#    - Sett commit message og pattern (fra javascript)
+# 3) Når siste commit er samme dato/time og fra $INPUT_AUTHOR så avsluttes script
+# 4) Sett commit message og pattern (fra javascript)
+# 5) Når det er en endring i repository:
 #    - legg til endringer ihht. pattern og commit med melding
 #    - push kode til remote repository
 #
@@ -25,8 +26,15 @@ fi
 LATEST_AUTHOR="$(git log --pretty=%an -1)"
 
 if [[ "$LATEST_AUTHOR" == "$INPUT_AUTHOR" ]]; then
-  echo "a commit has already been done on this branch by $INPUT_AUTHOR... skipping new commit"
-  exit 0;
+  LAST_COMMIT=$(git log --pretty=%cd -1)
+  DATE=$(date)
+  LAST_CHECK="${LAST_COMMIT%%:*}"
+  LAST_DATE="${DATE%%:*}"
+
+  if [[ "$LAST_CHECK" == "$LAST_DATE" ]]; then
+      echo "the latest commit is done by $INPUT_AUTHOR@$LAST_COMMIT... skipping new commit"
+      exit 0;
+  fi
 fi
 
 git remote set-url origin https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
