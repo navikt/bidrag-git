@@ -16,7 +16,8 @@ Andre sider ved design av disse "actions", er at de er laget for å kjøre samme
 
 Versjon | Endringstype | Beskrivelse
 --------|--------------|------------
-v4.0.0  | Endret       | `commit`: add security token and change directory to git folder before running
+v5      | Endret       | `commit`: removed git folder. Using the name of the github repository for folder to use 
+v4.0.x  | Endret       | `commit`: add security token and change directory to git folder before running
 v3.0.7  | Endret       | `commit`: run without input when author is blank
 v3.0.6  | Endret       | `commit`: author and token can be provided as input
 v3.0.5  | Endret       | `commit`: no git status after push
