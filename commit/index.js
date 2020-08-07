@@ -3,8 +3,6 @@ const exec = require("@actions/exec");
 
 async function run() {
   try {
-    const pattern = core.getInput('pattern');
-    const commitMessage = core.getInput('commit_message');
     const author = core.getInput('author');
 
     if (author == null || author === "") {
@@ -13,9 +11,15 @@ async function run() {
       setAuthorInformationFromInput(author);
     }
 
-    // Execute tag bash script
-    await exec.exec(`bash ${__dirname}/../commit.sh`, [pattern, commitMessage]);
+    const commitMessage = core.getInput('commit_message');
+    const pattern = core.getInput('pattern');
+    const securityToken = core.getInput('security_token');
 
+    // Execute tag bash script
+    await exec.exec(
+        `bash ${__dirname}/../commit.sh`,
+        [commitMessage, pattern, securityToken]
+    );
   } catch (error) {
     core.setFailed(error.message);
   }
@@ -45,7 +49,6 @@ function setAuthorInformationFromGithubEvent() {
 function setAuthorInformationFromInput(author) {
   process.env.AUTHOR_NAME = author;
   process.env.AUTHOR_EMAIL = 'no-reply-' + author + '@navikt.github.com';
-  process.env.GITHUB_TOKEN = core.getInput('security_token');
 
   core.info("Author: " + author + ", email: " + process.env.AUTHOR_EMAIL)
 }

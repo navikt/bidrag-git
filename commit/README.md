@@ -6,10 +6,10 @@ Requires a runner that is able to execute bash scripts.
 
 The action requires the commit messageN
 
-The author information of the commit will be gathered from the GITHUB_EVENT or an cusom auhor with a
-security token can be provided.
+The author information of the commit will be gathered from the GITHUB_EVENT, or a custom author
+with a security token must be provided.
 
-If no event is present, the following information will be used:
+If no event is present, the following information will be given to git:
 - Author name: Tag & Commit Action
 - Author email: bidrag-git.commit@navikt.github.com
 
@@ -17,5 +17,5 @@ If an author is provided, the following information will be used:
 - Author name: the author provided 
 - Author email: no-reply-<author provided>@navikt.github.com
 
-If an author is provided, it will not do a new commit when the last commit was done by this author.
-This to prevent an eternal loop of commits by the same author...
+If an author is provided, the action will not do a new commit when the last commit was done by
+the same author. This to prevent an eternal loop of commits by the same author...
