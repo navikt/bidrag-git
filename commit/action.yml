@@ -1,20 +1,17 @@
 name: Git commit
 description: Create a commit in a git repository
 inputs:
+  author:
+    description: the author of this commit (this will also result in email address "no-reply-<author>@navikt.github.com"). if no author is given, the author information from the github event is used
+    required: false
   commit_message:
     description: the commit message for any changes made by former actions
     required: true
   pattern:
     description: the pattern to use with git add
     required: true
-  author:
-    description: the author of this commit (this will also result in email address "no-reply-<author>@navikt.github.com"). if no author is given, the author information from the github event is used
-    required: false
   security_token:
     description: the security token to authorize this commit when an author is provided. if no autor is provided, GITHUB_TOKEN is expected as an environment variable
-    required: false
-  git_folder:
-    description: a folder where to move if working directory is outside a git project
     required: false
 runs:
   using: node12
