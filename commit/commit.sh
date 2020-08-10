@@ -3,35 +3,24 @@ set -x
 
 ############################################
 #
+# Følgende forutsetninger for dette skriptet
+# a) Miljøvariabler for git blir satt av javaskript
+#    - USER_EMAIL og USER_NAME
+#
 # Følgende skjer i dette skriptet:
-# 1) Konfigurerer git for remote repository
-#    - USER_EMAIL og USER_NAME settes av javascriptet
-# 2) Setter working directory til $RUNNER_WORKSPACE/<project name>
-# 3) Når siste commit er samme dato/time og fra $INPUT_AUTHOR så avsluttes script
-# 4) Sett input fra javascript
-# 5) Når det er en endring i repository:
+# 1) Setter working directory til $RUNNER_WORKSPACE/<project name>
+# 2) Sett input fra javascript
+# 3) Når det er en endring i repository:
 #    - legg til endringer ihht. pattern og commit med melding
 #    - push kode til remote repository
 #
 ############################################
 
-REPO_FOLDER="$(echo "$RUNNER_WORKSPACE/$GITHUB_REPOSITORY" | sed 's;navikt/;;')"
+cd "$RUNNER_WORKSPACE" || exit 1
+VERSION_CONTROLLED_FOLDER=$(find . -type d -name ".git" | head -n 1 | sed 's;./;;' | sed 's;/.git;;')
+REPO_FOLDER="$RUNNER_WORKSPACE/$VERSION_CONTROLLED_FOLDER"
 echo "Goto $REPO_FOLDER"
 cd "$REPO_FOLDER" || exit 1
-
-LATEST_AUTHOR="$(git log --pretty=%an -1)"
-
-if [[ "$LATEST_AUTHOR" == "$INPUT_AUTHOR" ]]; then
-  LAST_COMMIT=$(git log --pretty=%cd -1)
-  DATE=$(date)
-  LAST_CHECK="${LAST_COMMIT%%:*}"
-  LAST_DATE="${DATE%%:*}"
-
-  if [[ "$LAST_CHECK" == "$LAST_DATE" ]]; then
-      echo "the latest commit is done by $INPUT_AUTHOR@$LAST_COMMIT... skipping new commit"
-      exit 0
-  fi
-fi
 
 INPUT_COMMIT_MESSAGE=$1
 INPUT_PATTERN=$2
