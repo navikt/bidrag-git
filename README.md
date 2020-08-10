@@ -16,7 +16,8 @@ Andre sider ved design av disse "actions", er at de er laget for å kjøre samme
 
 Versjon | Endringstype | Beskrivelse
 --------|--------------|------------
-v5      | Endret       | `commit`: removed git folder. Using the name of the github repository for folder to use 
+v5.0.2  | Endret       | `commit`: the script will find the github project based on the `.git` folder 
+v5.0.1  | Endret       | `commit`: removed git folder. Using the name of the github repository for folder to use 
 v4.0.x  | Endret       | `commit`: add security token and change directory to git folder before running
 v3.0.7  | Endret       | `commit`: run without input when author is blank
 v3.0.6  | Endret       | `commit`: author and token can be provided as input
