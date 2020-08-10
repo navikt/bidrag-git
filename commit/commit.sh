@@ -17,7 +17,8 @@ set -x
 ############################################
 
 cd "$RUNNER_WORKSPACE" || exit 1
-VERSION_CONTROLLED_FOLDER=$(find . -type d -name ".git" | head -n 1 | sed 's;./;;' | sed 's;/.git;;')
+POSSIBLE_FOLDER="$(echo "$RUNNER_WORKSPACE/$GITHUB_REPOSITORY" | sed 's;navikt/;;')"
+VERSION_CONTROLLED_FOLDER=$(find . -type d -name ".git" | grep "$POSSIBLE_FOLDER" | sed 's;./;;' | sed 's;/.git;;')
 REPO_FOLDER="$RUNNER_WORKSPACE/$VERSION_CONTROLLED_FOLDER"
 echo "Goto $REPO_FOLDER"
 cd "$REPO_FOLDER" || exit 1
