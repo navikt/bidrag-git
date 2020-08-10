@@ -32,7 +32,7 @@ else
   GITHUB_TOKEN=$INPUT_SECURITY_TOKEN
 fi
 
-git "$(echo "remote set-url origin https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git" | sed "s;';;")"
+git remote set-url origin "$(echo "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git" | sed "s;';;")"
 git config --global user.email "$AUTHOR_EMAIL"
 git config --global user.name "$AUTHOR_NAME"
 
