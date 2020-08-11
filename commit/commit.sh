@@ -36,7 +36,7 @@ git remote set-url origin "$(echo "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.co
 git config --global user.email "$AUTHOR_EMAIL"
 git config --global user.name "$AUTHOR_NAME"
 
-if ! git diff --quiet
+if ! git diff-files --quiet
 then
   git status | grep -v "Your branch is" | grep -v "Changes not staged" | grep -v "(use \"git"
 
