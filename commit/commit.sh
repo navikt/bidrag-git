@@ -1,5 +1,5 @@
 #!/bin/bash
-set -e
+set -x
 
 ############################################
 #
@@ -32,19 +32,25 @@ else
   GITHUB_TOKEN=$INPUT_SECURITY_TOKEN
 fi
 
-git remote set-url origin "$(echo "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git" | sed "s;';;")"
+git remote set-url origin "$(echo "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git" | sed "s;';;g")"
 git config --global user.email "$AUTHOR_EMAIL"
 git config --global user.name "$AUTHOR_NAME"
 
 if ! git diff-files --quiet
 then
-  git status | grep -v "Your branch is" | grep -v "Changes not staged" | grep -v "(use \"git"
+  git status | grep -v "Your branch is" | grep -v "Changes not staged" | grep -v "(use \"git" | tee git-status
 
-  echo "Committing changes (pattern: $INPUT_PATTERN) with message: $INPUT_COMMIT_MESSAGE"
+  COMMIT_WS=$(cat git-status | grep -c  "nothing to commit, working directory clean" || true) # || true when count is 0 (no failure)
 
-  git add "$INPUT_PATTERN"
-  git commit -m "$INPUT_COMMIT_MESSAGE"
-  git push
+  if [[ $COMMIT_WS -ne 0 ]]; then
+    echo "Found no difference in $GITHUB_REPOSITORY, did not use pattern: $INPUT_PATTERN"
+  else
+    echo "Committing changes (pattern: $INPUT_PATTERN) with message: $INPUT_COMMIT_MESSAGE"
+
+    git add "$INPUT_PATTERN"
+    git commit -m "$INPUT_COMMIT_MESSAGE"
+    git push
+  fi
 else
   echo "No difference detected in $GITHUB_REPOSITORY, did not use pattern: $INPUT_PATTERN"
 fi
