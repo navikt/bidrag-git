@@ -16,6 +16,8 @@ Andre sider ved design av disse "actions", er at de er laget for å kjøre samme
 
 Versjon | Endringstype | Beskrivelse
 --------|--------------|------------
+v5.0.3  | Endret       | `commit`: gitt `diff-files --quiet` (instead of `git diff --quiet`) 
+v5.0.2  | Endret       | `commit`: remove simple quotes from url 
 v5.0.1  | Endret       | `commit`: the script will find the github project based on the `.git` folder 
 v5.0.0  | Endret       | `commit`: removed git folder. Using the name of the github repository for folder to use 
 v4.0.x  | Endret       | `commit`: add security token and change directory to git folder before running
