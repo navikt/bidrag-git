@@ -1,5 +1,5 @@
 #!/bin/bash
-set -x
+set -e
 
 ############################################
 #
@@ -38,14 +38,15 @@ git config --global user.name "$AUTHOR_NAME"
 
 if ! git diff-files --quiet
 then
-  git status | grep -v "Your branch is" | grep -v "Changes not staged" | grep -v "(use \"git" | tee git-status
+  git status | grep -v "Your branch is" | grep -v "Changes not staged" | grep -v "(use \"git" | tee .git-status
 
-  COMMIT_WS=$(cat git-status | grep -c  "nothing to commit, working directory clean" || true) # || true when count is 0 (no failure)
+  COMMIT_WS=$(cat .git-status | grep -c  "nothing to commit, working directory clean" || true) # || true when count is 0 (no failure)
 
   if [[ $COMMIT_WS -ne 0 ]]; then
     echo "Found no difference in $GITHUB_REPOSITORY, did not use pattern: $INPUT_PATTERN"
   else
     echo "Committing changes (pattern: $INPUT_PATTERN) with message: $INPUT_COMMIT_MESSAGE"
+    sudo rm .git-status
 
     git add "$INPUT_PATTERN"
     git commit -m "$INPUT_COMMIT_MESSAGE"
