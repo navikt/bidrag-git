@@ -16,6 +16,7 @@ Andre sider ved design av disse "actions", er at de er laget for å kjøre samme
 
 Versjon | Endringstype | Beskrivelse
 --------|--------------|------------
+v5.0.4  | Endret       | `commit`: bug hunt with changes (no functional change) 
 v5.0.3  | Endret       | `commit`: gitt `diff-files --quiet` (instead of `git diff --quiet`) 
 v5.0.2  | Endret       | `commit`: remove simple quotes from url 
 v5.0.1  | Endret       | `commit`: the script will find the github project based on the `.git` folder 
