@@ -11,8 +11,9 @@ set -x
 # 1) Setter working directory til $RUNNER_WORKSPACE/<project name>
 # 2) Sett input fra javascript
 # 3) Når det er en endring i repository:
-#    - legg til endringer ihht. pattern og commit med melding
-#    - push kode til remote repository
+#    - legg til endringer ihht. pattern
+#    - commit med melding
+#    - push kode til remote repository hvis det ble gjort en commit (endringene var faktiske endringer)
 #
 ############################################
 
@@ -38,19 +39,23 @@ git config --global user.name "$AUTHOR_NAME"
 
 if ! git diff-files --quiet
 then
-  git status | grep -v "Your branch is" | grep -v "Changes not staged" | grep -v "(use \"git" | tee .git-status
+  git status | grep -v "Your branch is" | grep -v "Changes not staged" | grep -v "(use \"git"
 
-  COMMIT_WS=$(cat .git-status | grep -c  "nothing to commit, working directory clean" || true) # || true when count is 0 (no failure)
+  git add "$INPUT_PATTERN"
+  git commit -m "$INPUT_COMMIT_MESSAGE" 2> /dev/null
 
-  if [[ $COMMIT_WS -ne 0 ]]; then
-    echo "Found no difference in $GITHUB_REPOSITORY, did not use pattern: $INPUT_PATTERN"
-  else
-    echo "Committing changes (pattern: $INPUT_PATTERN) with message: $INPUT_COMMIT_MESSAGE"
-    sudo rm .git-status
+  if [ $? -ne 0 ]; then
+    echo "Unnable to commit into $GITHUB_REPOSITORY! pattern: $INPUT_PATTERN, exit code from commit: $?"
+    exit
+  fi
 
-    git add "$INPUT_PATTERN"
-    git commit -m "$INPUT_COMMIT_MESSAGE"
-    git push
+  echo "Committing changes (pattern: $INPUT_PATTERN) with message: $INPUT_COMMIT_MESSAGE"
+
+  git push 2> /dev/null
+
+  if [ $? -ne 0 ]; then
+    echo ::error "exit code from push. $?"
+    exit
   fi
 else
   echo "No difference detected in $GITHUB_REPOSITORY, did not use pattern: $INPUT_PATTERN"
