@@ -15,21 +15,23 @@ Andre sider ved design av disse "actions", er at de er laget for å kjøre samme
 ### Release log
 
 Versjon | Endringstype | Beskrivelse
---------|--------------|------------
-v5.0.4  | Endret       | `commit`: bug hunt with changes (no functional change) 
-v5.0.3  | Endret       | `commit`: gitt `diff-files --quiet` (instead of `git diff --quiet`) 
-v5.0.2  | Endret       | `commit`: remove simple quotes from url 
-v5.0.1  | Endret       | `commit`: the script will find the github project based on the `.git` folder 
-v5.0.0  | Endret       | `commit`: removed git folder. Using the name of the github repository for folder to use 
-v4.0.x  | Endret       | `commit`: add security token and change directory to git folder before running
-v3.0.7  | Endret       | `commit`: run without input when author is blank
-v3.0.6  | Endret       | `commit`: author and token can be provided as input
-v3.0.5  | Endret       | `commit`: no git status after push
-v3.0.4  | Endret       | `tag`: message is surrounded with quotes in javascript
-v3.0.3  | Endret       | repo foldere endret navn, git-commit -> commit og git-tag -> tag
-v3.0.2  | Endret       | `git-commit`: javascript setter anførselstegn rundt commit melding
-v3.0.1  | Endret       | `git-commit`: javascript setter anførselstegn rundt commit melding
-v3      | Endret       | nname of action input variables
-v2.0.1  | Endret       | `git-commit`: push without sed communication with file system
-v2      | Endret       | `git-commit`: push without sed communication with file system
-v1      | Endret       | `git-tag`: ommit " when doing logging with the echo command 
+----|---|---
+v5.0.5 | Endret | `commit`: use exit codes and swallow errors from git push 
+v5.0.4 | Endret | `commit`: bug hunt with changes (no functional change) 
+v5.0.3 | Endret | `commit`: gitt `diff-files --quiet` (instead of `git diff --quiet`) 
+v5.0.2 | Endret | `commit`: remove simple quotes from url 
+v5.0.1 | Endret | `commit`: the script will find the github project based on the `.git` folder 
+v5.0.0 | Endret | `commit`: removed git folder. Using the name of the github repository for folder to use 
+v4.0.x | Endret | `commit`: add security token and change directory to git folder before running
+v3.0.7 | Endret | `commit`: run without input when author is blank
+v3.0.6 | Endret | `commit`: author and token can be provided as input
+v3.0.5 | Endret | `commit`: no git status after push
+v3.0.4 | Endret | `tag`: message is surrounded with quotes in javascript
+v3.0.3 | Endret | repo foldere endret navn, git-commit -> commit og git-tag -> tag
+v3.0.2 | Endret | `git-commit`: javascript setter anførselstegn rundt commit melding
+v3.0.1 | Endret | `git-commit`: javascript setter anførselstegn rundt commit melding
+v3 | Endret | name of action input variables
+v2.0.1 | Endret | `git-commit`: push without sed communication with file system
+v2 | Endret | `git-commit`: push without sed communication with file system
+v1 | Endret | `git-tag`: ommit " when doing logging with the echo command 
+v1 | Created | Moved from `bidrag-actions` 
