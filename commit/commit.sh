@@ -1,16 +1,15 @@
 #!/bin/bash
-set -x
+set -e
 
 ############################################
 #
-# Følgende forutsetninger for dette skriptet
-# a) Miljøvariabler for git blir satt av javaskript
-#    - USER_EMAIL og USER_NAME
-#
 # Følgende skjer i dette skriptet:
-# 1) Setter working directory til $RUNNER_WORKSPACE/<project name>
-# 2) Sett input fra javascript
-# 3) Når det er en endring i repository:
+# 1) Setter working directory til $RUNNER_WORKSPACE/<project name> (folder som inneholder .git))
+# 2) Sett input fra action
+# 3) Setter security token fra input eller bruker GITHUB_TOKEN
+# 4) Konfigurerer git ihht. git commit fra workflow
+# 5) Når det er en endring i repository:
+#    - kjører git status (suppress noe output)
 #    - legg til endringer ihht. pattern
 #    - commit med melding
 #    - push kode til remote repository hvis det ble gjort en commit (endringene var faktiske endringer)
