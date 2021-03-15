@@ -42,7 +42,7 @@ then
   git add "$INPUT_PATTERN"
   git commit -m "$INPUT_COMMIT_MESSAGE" 2> /dev/null || true
 
-  echo "Committing changes (pattern: $INPUT_PATTERN) with message: $INPUT_COMMIT_MESSAGE"
+  echo "Using pattern: $INPUT_PATTERN) and commit message: $INPUT_COMMIT_MESSAGE"
 
   git push 2> /dev/null || true
 else
