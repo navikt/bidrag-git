@@ -11,8 +11,7 @@ set -e
 # 5) Når det er en endring i repository:
 #    - kjører git status (suppress noe output)
 #    - legg til endringer ihht. pattern
-#    - commit med melding
-#    - push kode til remote repository hvis det ble gjort en commit (endringene var faktiske endringer)
+#    - commit med melding og push kode til remote repository (ikke feil hvis ingen endringer - kun commit fra pattern)
 #
 ############################################
 
@@ -41,21 +40,11 @@ then
   git status | grep -v "Your branch is" | grep -v "Changes not staged" | grep -v "(use \"git"
 
   git add "$INPUT_PATTERN"
-  git commit -m "$INPUT_COMMIT_MESSAGE" 2> /dev/null
-
-  if [ $? -ne 0 ]; then
-    echo "Unnable to commit into $GITHUB_REPOSITORY! pattern: $INPUT_PATTERN, exit code from commit: $?"
-    exit
-  fi
+  git commit -m "$INPUT_COMMIT_MESSAGE" 2> /dev/null || true
 
   echo "Committing changes (pattern: $INPUT_PATTERN) with message: $INPUT_COMMIT_MESSAGE"
 
-  git push 2> /dev/null
-
-  if [ $? -ne 0 ]; then
-    echo ::error "exit code from push. $?"
-    exit
-  fi
+  git push 2> /dev/null || true
 else
   echo "No difference detected in $GITHUB_REPOSITORY, did not use pattern: $INPUT_PATTERN"
 fi
