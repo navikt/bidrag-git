@@ -44,7 +44,7 @@ then
 
   echo "Using pattern: $INPUT_PATTERN) and commit message: $INPUT_COMMIT_MESSAGE"
 
-  git push 2> /dev/null || true
+  git push 2> /dev/null
 else
   echo "No difference detected in $GITHUB_REPOSITORY, did not use pattern: $INPUT_PATTERN"
 fi
