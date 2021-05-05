@@ -16,6 +16,8 @@ Andre sider ved design av disse "actions", er at de er laget for å kjøre samme
 
 Versjon | Endringstype | Beskrivelse
 ----|---|---
+v5.0.6 | Endret | `tag`: bump actions/core 1.2.7 and call tag.sh from parent folder
+v5.0.6 | Endret | `commit`: bump actions/core 1.2.7
 v5.0.5 | Endret | `commit`: use exit codes and swallow errors from git push 
 v5.0.4 | Endret | `commit`: bug hunt with changes (no functional change) 
 v5.0.3 | Endret | `commit`: gitt `diff-files --quiet` (instead of `git diff --quiet`) 
