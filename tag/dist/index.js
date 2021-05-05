@@ -1587,7 +1587,7 @@ async function run() {
     setAuthorInformation();
 
     // Execute tag bash script
-    await exec.exec(`bash ${__dirname}/tag.sh ${tag} ${tagMessage}`);
+    await exec.exec(`bash ${__dirname}/../tag.sh ${tag} ${tagMessage}`);
 
   } catch (error) {
     core.setFailed(error.message);
