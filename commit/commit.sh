@@ -37,7 +37,7 @@ git config --global user.name "$AUTHOR_NAME"
 
 if ! git diff-files --quiet
 then
-  echo "Using pattern: $INPUT_PATTERN) and commit message: $INPUT_COMMIT_MESSAGE"
+  echo "Using pattern: '$INPUT_PATTERN' and commit message: $INPUT_COMMIT_MESSAGE"
 
   git status | grep -v "Your branch is" | grep -v "Changes not staged" | grep -v "(use \"git"
   git add "$INPUT_PATTERN"

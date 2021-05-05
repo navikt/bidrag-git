@@ -10,7 +10,7 @@ async function run() {
     setAuthorInformation();
 
     // Execute tag bash script
-    await exec.exec(`bash ${__dirname}/../tag.sh ${tag} ${tagMessage}`);
+    await exec.exec(`bash ${__dirname}/../tag.sh ${tag}`, [tagMessage]);
 
   } catch (error) {
     core.setFailed(error.message);
@@ -34,7 +34,11 @@ function setAuthorInformation() {
   }
 
   core.info(
-      `Using '${process.env.AUTHOR_NAME} <${process.env.AUTHOR_EMAIL}>' as author.`
+      `
+    Using
+    '${process.env.AUTHOR_NAME} <${process.env.AUTHOR_EMAIL}>'
+    as
+    author.`
   );
 }
 
