@@ -16,7 +16,7 @@ set -e
 ############################################
 
 cd "$RUNNER_WORKSPACE" || exit 1
-VERSION_CONTROLLED_FOLDER=$(find . -type d -name ".git" | head -n 1 | sed 's;./;;' | sed 's;/.git;;')
+VERSION_CONTROLLED_FOLDER=$( find . -type d -name ".git" | head -n 1 | sed 's;./;;' | sed 's;/.git;;' )
 REPO_FOLDER="$RUNNER_WORKSPACE/$VERSION_CONTROLLED_FOLDER"
 echo "Goto $REPO_FOLDER"
 cd "$REPO_FOLDER" || exit 1
