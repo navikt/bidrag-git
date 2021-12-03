@@ -1,0 +1,5 @@
+name: Git tag snapshot
+description: Create a tag in a git repository bumping tagged snapshot version
+runs:
+  using: node12
+  main: dist/index.js
