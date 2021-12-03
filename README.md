@@ -14,6 +14,10 @@ Andre sider ved design av disse "actions", er at de er laget for å kjøre samme
 
 ### Release log
 
+Action | Versjon | Endringstype | Beskrivelse
+---|---|---|---
+git-tag-snap | v1.0.0 | Opprettet | "Bump" av "snapshot" versjon utelukkende ved bruk av git tags
+
 Versjon | Endringstype | Beskrivelse
 ----|---|---
 v5.0.6 | Endret | `tag`: bump actions/core 1.2.7, call tag.sh from parent folder, fix tag message 
