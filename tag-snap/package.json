@@ -1,0 +1,8 @@
+{
+  "name": "git-tag-snap",
+  "version": "1.0.0",
+  "dependencies": {
+    "@actions/core": "^1.5.0",
+    "@actions/exec": "^1.1.0"
+  }
+}
