@@ -17,7 +17,8 @@ if [ -z "$SNAP_VERSION" ]; then
   exit 1
 fi
 
-echo "Current snapshot version will be the new released version: $SNAP_VERSION"
+NEW_V=$(echo "$SNAP_VERSION" | sed 's/snapshot-/v/')
+echo "Current snapshot version will be the new released version: $NEW_V"
 
-git tag -a "v$SNAP_VERSION" -m "released version $SNAP_VERSION"
+git tag -a "$NEW_V" -m "released version $NEW_V"
 git push --follow-tags
