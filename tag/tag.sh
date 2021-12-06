@@ -7,19 +7,18 @@ git config --global user.name "$AUTHOR_NAME"
 
 echo 'Making a tag of the HEAD_COMMIT'
 
-TAG=$1
-TAG_MESSAGE=$2
+git fetch --tags
+SNAP_VERSION=$(git tag --sort=-v:refname --list "snapshot-[0-9]*" | head -n 1)
+echo "Snapshot: $SNAP_VERSION"
 
-if [[ -z $INPUT_SRC_FOLDER ]]
-then
-  echo "Will not change working directory"
-  pwd
-else
-  echo "Will try to change folder to $INPUT_SRC_FOLDER"
-  cd "$INPUT_SRC_FOLDER"
+# if there is no snapshot version tag yet, fail...
+if [ -z "$SNAP_VERSION" ]; then
+  echo ::error:: "No previous snapshot version detected!"
+  exit 1
 fi
 
-echo "Tagging HEAD_COMMIT with message: $TAG_MESSAGE"
+NEW_V=$(echo "$SNAP_VERSION" | sed 's/snapshot-/v/')
+echo "Current snapshot version will be the new released version: $NEW_V"
 
-git tag -a "$TAG" -m "$TAG_MESSAGE"
-git push origin "$TAG"
+git tag -a "$NEW_V" -m "released version $NEW_V"
+git push --follow-tags

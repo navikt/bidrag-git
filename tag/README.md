@@ -12,4 +12,4 @@ The tag file containing will replace {} in the tag message (if exists).
 The author information of the commit will be gathered from the GITHUB_EVENT. If no event is present, the
 following information will be used:
 - Author name: Tag & Commit Action
-- Author email: navikt.bidrag-actions.git-commit@github.com
+- Author email: navikt.bidrag-actions.git-tag@github.com

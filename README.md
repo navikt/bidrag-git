@@ -8,15 +8,12 @@ Github Actions for git spesialisert for team bidrag
 Alt blir utført av bash-scripter slik at det enkelt kan testes på reell kodebase uten å måtte bygge med github. Javascript brukes dog til å hente
 informasjon om den som forårsaker en workflow til å bli utført.
 
-Man må også oppgi miljøvariabler for autentisering, eks: `GITHUB_TOKEN`.
-
-Andre sider ved design av disse "actions", er at de er laget for å kjøre sammen. Dvs. at enkelte actions lager output som kan brukes av andre "actions". 
-
 ### Release log
 
 Action | Versjon | Endringstype | Beskrivelse
 ---|---|---|---
-git-tag-snap | v1.0.0 | Opprettet | "Bump" av "snapshot" versjon utelukkende ved bruk av git tags
+tag-snap | v1.0.0 | Opprettet | "Bump" av "snapshot" versjon utelukkende ved bruk av git tags
+tag | v1.0.0 | Endret (fra bidrag-git@v5) | Release versjon lages på bakgrunn av "tagged snapshot" versjon
 
 Versjon | Endringstype | Beskrivelse
 ----|---|---
