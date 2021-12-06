@@ -12,8 +12,8 @@ informasjon om den som forårsaker en workflow til å bli utført.
 
 Action | Versjon | Endringstype | Beskrivelse
 ---|---|---|---
-git-tag-snap | v1.0.0 | Opprettet | "Bump" av "snapshot" versjon utelukkende ved bruk av git tags
-git-tag | v1.0.0 | Endret (fra bidrag-git@v5) | Release versjon lages på bakgrunn av "tagged snapshot" versjon
+tag-snap | v1.0.0 | Opprettet | "Bump" av "snapshot" versjon utelukkende ved bruk av git tags
+tag | v1.0.0 | Endret (fra bidrag-git@v5) | Release versjon lages på bakgrunn av "tagged snapshot" versjon
 
 Versjon | Endringstype | Beskrivelse
 ----|---|---
