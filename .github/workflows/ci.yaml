@@ -28,7 +28,7 @@ jobs:
         uses: navikt/bidrag-node/build-with-ncc@v1
         with:
           artifact_folder: actions/tag
-      - name: Install tag-snap
+      - name: Install tag-snapshot
         uses: navikt/bidrag-node/build-with-ncc@v1
         with:
           artifact_folder: actions/tag-snapshot
