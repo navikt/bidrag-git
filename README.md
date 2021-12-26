@@ -2,6 +2,7 @@
 Github Actions utbedret av jactor-rises
 
 ### Continuous integration
+[![build actions](https://github.com/jactor-rises/actions/actions/workflows/ci.yaml/badge.svg)](https://github.com/jactor-rises/actions/actions/workflows/ci.yaml)
 
 ### Hovedregel for design:
 Alt blir utført av bash-scripter slik at det enkelt kan testes på reell kodebase uten å måtte bygge med github. Javascript brukes dog til å hente
