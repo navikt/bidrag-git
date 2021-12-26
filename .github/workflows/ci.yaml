@@ -16,18 +16,22 @@ jobs:
       - run: npm i -g @zeit/ncc
       - name: Debug workspace
         run: env
+      - name: Install build-with-ncc
+        uses: navikt/bidrag-node/build-with-ncc@v1
+        with:
+          artifact_folder: actions/build-node-action
       - name: Install commit
         uses: navikt/bidrag-node/build-with-ncc@v1
         with:
-          artifact_folder: bidrag-git/commit
+          artifact_folder: actions/commit
       - name: Install tag
         uses: navikt/bidrag-node/build-with-ncc@v1
         with:
-          artifact_folder: bidrag-git/tag
+          artifact_folder: actions/tag
       - name: Install tag-snap
         uses: navikt/bidrag-node/build-with-ncc@v1
         with:
-          artifact_folder: bidrag-git/tag-snap
+          artifact_folder: actions/tag-snapshot
       - name: Generate timestamp
         id: now
         run: echo ::set-output name=timestamp::$(date +"%Y-%m-%d:%T")

@@ -39,8 +39,8 @@ function setAuthorInformationFromGithubEvent() {
   } else {
     core.warning('No event path available, unable to fetch author info.');
 
-    process.env.AUTHOR_NAME = 'Commit Action';
-    process.env.AUTHOR_EMAIL = 'bidrag-git.commit@navikt.github.com';
+    process.env.AUTHOR_NAME = 'jactor-rises';
+    process.env.AUTHOR_EMAIL = 'jactor-rises/actions.commit@github.com';
   }
 
   core.info(

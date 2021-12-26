@@ -26,8 +26,8 @@ function setAuthorInformation() {
   } else {
     core.warning('No event path available, unable to fetch author info.');
 
-    process.env.AUTHOR_NAME = 'Tag snapshot Action';
-    process.env.AUTHOR_EMAIL = 'navikt.bidrag-actions.git-tag-snap@github.com';
+    process.env.AUTHOR_NAME = 'jactor-rises';
+    process.env.AUTHOR_EMAIL = 'jactor-rises/actions.tag-snapshot@github.com';
   }
 
   core.info(
