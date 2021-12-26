@@ -36,6 +36,10 @@ jobs:
         uses: jactor-rises/actions/build-node-action@feature/actions
         with:
           artifact_folder: actions/tag-snapshot
+      - name: Install verify-maven-dependencies
+        uses: jactor-rises/actions/build-node-action@feature/actions
+        with:
+          artifact_folder: actions/verify-maven-dependencies
       - name: Generate timestamp
         id: now
         run: echo ::set-output name=timestamp::$(date +"%Y-%m-%d:%T")

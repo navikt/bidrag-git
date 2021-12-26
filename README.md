@@ -17,3 +17,4 @@ commit | v1.0.0 | Opprettet | Commit endring av files i et github repo og push t
 setup-maven | v1.0.0 | Opprettet | Sets up repository settings for a maven build
 tag | v1.0.0 | Opprettet | "Tag" release versjon lages på bakgrunn av "tagged snapshot" versjon
 tag-snapshot | v1.0.0 | Opprettet | "Bump" av "snapshot" versjon ved bruk av git tag
+verify-maven-dependencies | v1.0.0 | Opprettet | Verifiserer at maven-bygg ikke inneholder SNAPSHOT avhengigheter
